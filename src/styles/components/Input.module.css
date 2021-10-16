@@ -1,0 +1,16 @@
+.container {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 15px 30px;
+  outline: none;
+  border: 1px solid var(--lightgray);
+  border-radius: 3px;
+  box-shadow: var(--card-shadow);
+}
+
+.input::placeholder {
+}

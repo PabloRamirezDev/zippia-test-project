@@ -1,9 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
+
+:root {
+  /* COLOR VARIABLES */
+  --white: #f0f0f0;
+  --lightgray: #cdcdcd;
+  --gray: #898989;
+  --darkgray: #232323;
+  --black: #0f0f0f;
+
+  --lightblue: #aeebff;
+  --blue: #11aadd;
+  --darkblue: #222279;
+  --lightviolet: #faa5fa;
+  --violet: #bb33bb;
+  --darkviolet: #641b64;
+
+  --card-shadow: 5px 5px 8px 8px rgba(0, 0, 0, 0.07);
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--white);
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a {
@@ -12,5 +32,37 @@ a {
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  font-family: "Montserrat Alternates", -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+:root {
+  --content-width: 90vw;
+}
+
+@media (min-width: 400px) {
+  :root {
+    --content-width: 85vw;
+  }
+}
+@media (min-width: 720px) {
+  :root {
+    --content-width: 75vw;
+  }
+}
+@media (min-width: 960px) {
+  :root {
+    --content-width: 65vw;
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --content-width: 55vw;
+  }
 }

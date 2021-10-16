@@ -1,0 +1,12 @@
+POST https://www.zippia.com/api/jobs/
+Content-Type: application/json
+
+{
+"companySkills": true,
+"dismissedListingHashes": [],
+"fetchJobDesc": true,
+"jobTitle": "Business Analyst",
+"locations": [],
+"numJobs": 20,
+"previousListingHashes": []
+}

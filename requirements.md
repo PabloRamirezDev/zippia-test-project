@@ -9,7 +9,7 @@
         "dismissedListingHashes": [],
         "fetchJobDesc": true,
         "jobTitle": "Business Analyst",
-        "loactions": [],
+        "locations": [],
         "numJobs": 20,
         "previousListingHashes": []
     }
