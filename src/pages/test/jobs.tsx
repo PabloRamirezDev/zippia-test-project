@@ -1,3 +1,9 @@
+// ***************************************
+// This is the main jobs page: /test/jobs
+// ***************************************
+
+// Imports
+
 import { useState } from "react";
 
 import type { NextPage, GetServerSideProps } from "next";
@@ -8,19 +14,24 @@ import JobCard from "../../components/JobCard";
 import moment from "moment";
 import Input from "../../components/Input";
 
+// The page receives two props:
 interface Props {
-  jobs?: Job[];
-  error?: any;
+  jobs?: Job[]; // Fetched jobs in the server side
+  error?: any; // Error ocurred when fetching jobs
 }
 
 const Jobs: NextPage<Props> = ({ jobs, error }) => {
-  const [companyQuery, setCompanyQuery] = useState("");
-  const [section, setSection] = useState("");
+  // Page state
+  const [section, setSection] = useState(""); // Section displayed in page: "searchByCompany" | "last7Days" | ""
+  const [companyQuery, setCompanyQuery] = useState(""); // Search string when section === "searchByCompany"
 
+  // Filter the rendered jobs depending on the section
   const filterBySection = (job: Job) => {
     if (!section) {
+      // When section is falsy (""), all jobs should be displayed
       return true;
     } else if (section === "searchByCompany") {
+      // If searching by company, render only jobs that match the company name with the query string
       if (!companyQuery) {
         return true;
       } else {
@@ -29,6 +40,7 @@ const Jobs: NextPage<Props> = ({ jobs, error }) => {
           .includes(companyQuery.toLowerCase());
       }
     } else if (section === "last7Days") {
+      // If looking for the last 7 days, render only jobs that were posted after 7 days ago
       return moment(job.OBJpostingDate).isSameOrAfter(
         moment().startOf("day").subtract(7, "days")
       );
@@ -36,6 +48,7 @@ const Jobs: NextPage<Props> = ({ jobs, error }) => {
   };
 
   if (jobs) {
+    // If jobs were fetched succesfully, render them
     return (
       <Layout
         section={section}
@@ -69,12 +82,15 @@ const Jobs: NextPage<Props> = ({ jobs, error }) => {
       </Layout>
     );
   } else if (error) {
-    return <Layout>Something happened</Layout>;
+    // If there was an error, render a generic error message
+    return <Layout error>Something happened</Layout>;
   } else {
-    return <Layout>Unkown error</Layout>;
+    // This case shouldn't be reached
+    return <Layout error>Unkown error</Layout>;
   }
 };
 
+// Fetch jobs before sending to client and pass them as props
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   try {
     const jobs = await fetch("https://www.zippia.com/api/jobs/", {

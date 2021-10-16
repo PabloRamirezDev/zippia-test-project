@@ -8,13 +8,12 @@ interface Props {
   onChange: (value: string) => void;
 }
 
+// A simple input component
 const Input: React.FC<Props> = ({ value, label, onChange }) => {
-  const id = `${Math.ceil(Math.random() * 5)}`;
   return (
     <div className={styles.container}>
       <input
         className={styles.input}
-        id={id}
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}

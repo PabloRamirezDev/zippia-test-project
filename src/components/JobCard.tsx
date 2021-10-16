@@ -12,6 +12,7 @@ interface Props {
   companyLogo: string;
 }
 
+// A component that renders the job data
 const JobCard: React.FC<Props> = ({
   title,
   description,
